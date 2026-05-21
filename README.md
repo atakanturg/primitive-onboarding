@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Primitive Onboarding
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Deployment Status](https://img.shields.io/website?url=https%3A%2F%2Fonboarding.primitive-os.cc)](https://onboarding.primitive-os.cc)
+[![Part of Primitive OS](https://img.shields.io/badge/Primitive_OS-Ecosystem-0a0a0a)](https://primitive-os.cc)
 
-Currently, two official plugins are available:
+Automated workspace provisioning for Slack, Google Workspace, and Microsoft 365. Connect your tools once — provision every new hire from a single form.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What It Does
 
-## React Compiler
+1. **Connect** — Authorize the Primitive bot to your Slack workspace via OAuth
+2. **Map** — Define role-to-channel mappings once, saved permanently to your account
+3. **Onboard** — Enter a new hire's name, email, and role; channels, groups, and welcome messages are handled automatically
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Systems
 
-## Expanding the ESLint configuration
+| Integration | Status | Notes |
+| :--- | :--- | :--- |
+| **Slack** | ● Live | Bot provisioning, channel mapping, welcome DMs |
+| **Google Workspace** | ○ Q3 2026 | Users, OUs, shared drives, calendar resources |
+| **Microsoft 365** | ○ Q4 2026 | Entra ID, Teams, SharePoint, Exchange |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend:** React 19, TypeScript, Vite, Tailwind v4, Framer Motion
+- **Auth & DB:** Supabase (Google OAuth, Row-Level Security)
+- **Deployment:** Cloudflare
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env   # add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run the SQL in `supabase-schema.sql` against your Supabase project to create the required tables (`slack_setup`, `onboarding_runs`) with RLS policies.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Contact
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+[contact@primitive-os.cc](mailto:contact@primitive-os.cc) · [primitive-os.cc](https://primitive-os.cc)
