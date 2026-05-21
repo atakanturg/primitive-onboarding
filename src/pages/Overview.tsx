@@ -15,14 +15,14 @@ export function Overview() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ maxWidth: 1280, margin: '0 auto', padding: '180px 96px 140px' }}>
+    <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(100px,15vw,180px) clamp(20px,8vw,96px) 140px' }}>
 
       {/* Hero */}
       <motion.div
         initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={rt(0)}
         style={{ maxWidth: 720, marginBottom: 96 }}
       >
-        <h1 style={{ fontFamily: 'var(--f-display)', fontWeight: 400, fontSize: 80, lineHeight: 1.04, letterSpacing: '-.025em', margin: '0 0 32px' }}>
+        <h1 style={{ fontFamily: 'var(--f-display)', fontWeight: 400, fontSize: 'clamp(44px, 8vw, 80px)', lineHeight: 1.04, letterSpacing: '-.025em', margin: '0 0 32px' }}>
           Onboarding,<br /><span className="hand">scripted</span>
         </h1>
         <p style={{ fontFamily: 'var(--f-body)', fontSize: 18, lineHeight: 1.65, color: 'var(--muted)', maxWidth: 560 }}>
@@ -98,7 +98,8 @@ export function Overview() {
       <motion.div
         initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }} transition={rt(0)}
-        style={{ marginTop: 120, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}
+        className="ob-how-grid"
+        style={{ marginTop: 'clamp(60px,10vw,120px)' }}
       >
         {[
           { n: '01', t: 'Connect', d: 'Add the Primitive bot to your workspace once via OAuth.' },
@@ -114,9 +115,9 @@ export function Overview() {
       </motion.div>
 
       <style>{`
-        @media (max-width: 900px) {
-          div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
-        }
+        .ob-how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+        @media (max-width: 900px) { .ob-how-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .ob-how-grid { grid-template-columns: 1fr; gap: 32px; } }
       `}</style>
     </div>
   );
