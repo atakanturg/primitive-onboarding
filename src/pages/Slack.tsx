@@ -130,7 +130,7 @@ export function Slack() {
   /* ── Auth gate ────────────────────────────────────────── */
   if (!user) {
     return (
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '180px 96px 140px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(100px,15vw,180px) clamp(20px,8vw,96px) 140px' }}>
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
           style={{ maxWidth: 560 }}>
           <h1 style={{ fontFamily: 'var(--f-display)', fontSize: 56, lineHeight: 1.06, margin: '0 0 24px' }}>
@@ -150,7 +150,7 @@ export function Slack() {
 
   /* ── Main flow ────────────────────────────────────────── */
   return (
-    <div style={{ maxWidth: 860, margin: '0 auto', padding: '160px 96px 140px' }}>
+    <div style={{ maxWidth: 860, margin: '0 auto', padding: 'clamp(100px,14vw,160px) clamp(20px,8vw,96px) 140px' }}>
 
       {/* Page header */}
       <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}

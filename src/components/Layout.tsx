@@ -102,8 +102,8 @@ export default function Layout() {
           </AnimatePresence>
         </main>
 
-        <footer style={{ borderTop: '1px solid var(--ink)', padding: '64px 96px 140px', background: 'var(--paper)', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr', gap: 56, alignItems: 'start' }}>
+        <footer style={{ borderTop: '1px solid var(--ink)', padding: 'clamp(32px,5vw,64px) clamp(24px,8vw,96px) 140px', background: 'var(--paper)', position: 'relative', zIndex: 1 }}>
+          <div className="ob-footer-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span className="mark" style={{ width: 26, height: 26, color: 'var(--accent)' }}><span className="glyph" /></span>
@@ -122,9 +122,9 @@ export default function Layout() {
               </ul>
             </div>
             <div>
-              <p style={{ fontFamily: 'var(--f-mono)', fontSize: 10, fontWeight: 500, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 16 }}>Legal</p>
+              <p style={{ fontFamily: 'var(--f-mono)', fontSize: 10, fontWeight: 500, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 16 }}>Repository</p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {[['#', 'Privacy'], ['#', 'Terms']].map(([href, label]) => (
+                {[['https://github.com/atakanturg/primitive-onboarding#readme', 'README ↗'], ['https://github.com/atakanturg/primitive-onboarding', 'GitHub ↗'], ['mailto:contact@primitive-os.cc', 'Contact']].map(([href, label]) => (
                   <li key={label}><a href={href} style={{ fontFamily: 'var(--f-body)', fontSize: 13, color: 'var(--ink-2)' }}>{label}</a></li>
                 ))}
               </ul>
