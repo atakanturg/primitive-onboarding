@@ -1,0 +1,9 @@
+name = "primitive-onboarding"
+main = "server.ts"
+compatibility_date = "2026-05-12"
+compatibility_flags = [ "nodejs_compat" ]
+workers_dev = false
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
