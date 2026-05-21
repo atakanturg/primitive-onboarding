@@ -34,7 +34,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signInWithGoogle = async () => {
-    if (!supabase) return;
+    if (!supabase) {
+      console.error('Supabase not configured — VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY must be set in Cloudflare environment variables.');
+      alert('Auth not configured. Contact the administrator.');
+      return;
+    }
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: window.location.origin + '/slack' },
